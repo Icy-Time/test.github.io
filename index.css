@@ -14,7 +14,7 @@ canvas {
 
 .time {
   position: fixed;
-  bottom: 0;
+  bottom: 2vh;
   right: 0;
   color: #fff;
   font-size: 5vw;
