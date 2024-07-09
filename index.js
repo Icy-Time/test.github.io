@@ -56,7 +56,7 @@ const countdown = (futureTime) => {
     // 补零
     timeObj.minute = minute < 10 ? '0' + '' + minute : minute
     timeObj.second = second < 10 ? '0' + '' + second : second
-    timeObj.time = `${timeObj.hour}时${timeObj.minute}分${timeObj.second}秒`
+    timeObj.time = timeObj.hour + '时' + timeObj.minute + '分' + timeObj.second + '秒'
     return timeObj
 }
 // 执行倒计时
