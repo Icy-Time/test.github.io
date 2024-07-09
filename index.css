@@ -1,3 +1,6 @@
+* {
+  color: #fff;
+}
 body {
   background: black;
   overflow: hidden;
@@ -5,6 +8,7 @@ body {
 }
 
 canvas {
+  display: none;
   background: #000;
 }
 
@@ -17,11 +21,11 @@ canvas {
 }
 
 .content {
+  display: none;
   position: fixed;
   top: 12vh;
   left: calc(50% - 15vh);
   width: 30vh;
-  /* height: 60vh; */
   color: #fff;
   text-align: center;
 }
@@ -44,8 +48,28 @@ canvas {
 }
 
 .content .birth {
+  display: none;
   position: relative;
   left: calc(50% - 6vh);
   width: 12vh;
   font-size: 12vh;
+  text-shadow:
+    #ffbb00 -0.1vh -0.1vh 0,
+    #ffbb00 -0.2vh -0.2vh 0,
+    #ffbb00 -0.3vh -0.3vh 0,
+    #ffbb00 -0.4vh -0.4vh 0,
+    #ffbb00 -0.5vh -0.5vh 0,
+    #ffbb00 -0.6vh -0.6vh 0,
+    #ffbb00 -0.7vh -0.7vh 0,
+    #ffbb00 -0.8vh -0.8vh 0,
+    #ffbb00 -0.9vh -0.9vh 0,
+    #ffbb00 -1vh -1vh 0;
+}
+
+.top-title {
+  display: none;
+  position: fixed;
+  top: 1vh;
+  left: 1vw;
+  text-indent: 2em;
 }
