@@ -37,12 +37,18 @@ const countdown = (futureTime) => {
         minute: "00",
         second: "00",
         time: '0时00分00秒',
-        state: false
+        state: false,
+        test: ''
     }
 
     const currentTime = new Date().getTime();
     const futureTimeStamp = Date.parse(futureTime);
     const differTime = futureTimeStamp - currentTime;
+    timeObj.test = {
+        aa: currentTime,
+        bb: futureTimeStamp,
+        cc:differTime
+    }
 
     const hour = Math.floor(differTime / (1000 * 60 * 60))
     const minute = Math.floor(differTime / (1000 * 60)) % 60;
@@ -81,14 +87,14 @@ const setCountdown = (time) => {
     let timer = null
     // 首次执行时间函数先运行一次获取倒计时
     const timeObj = countdown(time)
-    timeText.innerHTML = timeObj.time
+    timeText.innerHTML = timeObj.test.aa +"/" + timeObj.test.bb + "/" + timeObj.test.cc
     showBirth(timeObj.state)
     // 如果首次倒计时小于等于零，则不执行定时器
     if (timeObj.state) return
 
     timer = setInterval(() => {
         const timeObjTemp = countdown(time)
-        timeText.innerHTML = timeObjTemp.time
+        timeText.innerHTML = timeObjTemp.test.aa +"/" + timeObj.test.bb + "/" + timeObj.test.cc
         showBirth(timeObjTemp.state)
 
         if (timeObjTemp.state) {
