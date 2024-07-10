@@ -54,8 +54,8 @@ const countdown = (futureTime) => {
     }
     timeObj.hour = String(hour);
     // 补零
-    timeObj.minute = minute < 10 ? '0' + '' + minute : minute
-    timeObj.second = second < 10 ? '0' + '' + second : second
+    timeObj.minute = minute < 10 ? '0' + '' + minute : String(minute)
+    timeObj.second = second < 10 ? '0' + '' + second : String(second)
     timeObj.time = timeObj.hour + '时' + timeObj.minute + '分' + timeObj.second + '秒'
     return timeObj
 }
