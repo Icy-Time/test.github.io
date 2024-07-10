@@ -1,6 +1,7 @@
 * {
   color: #fff;
 }
+
 body {
   background: black;
   overflow: hidden;
@@ -8,7 +9,6 @@ body {
 }
 
 canvas {
-  display: none;
   background: #000;
 }
 
@@ -21,7 +21,6 @@ canvas {
 }
 
 .content {
-  display: none;
   position: fixed;
   top: 12vh;
   left: calc(50% - 15vh);
@@ -47,12 +46,18 @@ canvas {
   font-weight: bolder;
 }
 
+.content .lt {
+  transition: all 0.7s;
+  transform: scale(0);
+}
+
 .content .birth {
-  display: none;
   position: relative;
   left: calc(50% - 6vh);
   width: 12vh;
   font-size: 12vh;
+  transition: all 0.7s;
+  transform: scale(0);
   text-shadow:
     #ffbb00 -0.1vh -0.1vh 0,
     #ffbb00 -0.2vh -0.2vh 0,
