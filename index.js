@@ -23,7 +23,8 @@ const ltText = document.querySelector(".lt")
 const birthText = document.querySelector("#content .birth")
 
 // 初始化目标时间
-let targetTime = '2024/7/11 12:20:00'
+let targetTime = '2024/7/12 16:40:30'
+let targetTimeDate = new Date(targetTime)
 
 // 上线时间
 const loginTime = {
@@ -37,8 +38,14 @@ let logTime = []
 // 获取当前倒计时
 /**
  * 返回一个截止指定日期的倒数时间
- * @param {string} futureTime 指定时间的日期，例:"2024-1-1"
- * @returns string 返回倒计时字符串，例:"46时34分58秒"
+ * @param {date} futureTime 指定时间的日期"
+ * @returns {{
+ * hour: string,
+ * minute: string,
+ * second: string,
+ * time: string,
+ * state: boolean,
+ * }}
  */
 const countdown = (futureTime) => {
   const timeObj = {
@@ -50,7 +57,7 @@ const countdown = (futureTime) => {
   }
 
   const currentTime = new Date().getTime();
-  const futureTimeStamp = new Date(futureTime).getTime();
+  const futureTimeStamp = futureTime.getTime();
   const differTime = futureTimeStamp - currentTime;
 
   const hour = Math.floor(differTime / (1000 * 60 * 60))
@@ -69,8 +76,17 @@ const countdown = (futureTime) => {
   return timeObj
 }
 // 执行倒计时
+/**
+ * 
+ * @param {date} time 
+ * @returns 
+ */
 const setCountdown = (time) => {
   // 封装函数判断何时展示祝福语
+  /**
+   * 
+   * @param {boolean} show 
+   */
   const showBirth = (show) => {
     if (show) {
       // 先出现烟花
@@ -99,21 +115,50 @@ const setCountdown = (time) => {
 
     }
   }
+  // 封装函数判断何时倒计时移动到中间
+  /**
+   * 
+   * @param {{
+   * hour:string,
+   * minute: string,
+   * second: string
+   * }} time 
+   * @returns boolean
+   */
+  const moveTimeElement = (time) => {
+    const hour = Number(time.hour)
+    const minute = Number(time.minute)
+    const second = Number(time.second)
+    if(hour > 0 || minute > 0 || second > 5 || second <3) {
+      return false
+    } 
+
+    timeText.style.fontSize = "10vw"
+    timeText.style.bottom = "50vh"
+    timeText.style.right = `calc(50% - ${30}vw)`
+    return true
+  }
+
 
   let timer = null
   // 首次执行时间函数先运行一次获取倒计时
   const timeObj = countdown(time)
   timeText.innerHTML = timeObj.time
   showBirth(timeObj.state)
+  let isTimeMove =  moveTimeElement(timeObj)
   // 如果首次倒计时小于等于零，则不执行定时器
   if (timeObj.state) return
 
   timer = setInterval(() => {
-    const timeObjTemp = countdown(time)
-    timeText.innerHTML = timeObjTemp.time
-    showBirth(timeObjTemp.state)
+    const realTime = countdown(time)
+    timeText.innerHTML = realTime.time
+    showBirth(realTime.state)
 
-    if (timeObjTemp.state) {
+    if(!isTimeMove) {
+      isTimeMove = moveTimeElement(realTime)
+    }
+
+    if (realTime.state) {
       clearInterval(timer)
       timer = null
     }
@@ -144,7 +189,7 @@ function onLoad() {
   setLogTime()
 
   // 倒计时
-  setCountdown(targetTime)
+  setCountdown(targetTimeDate)
 }
 
 // 窗口变化时执行

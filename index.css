@@ -18,6 +18,7 @@ canvas {
   right: 2vw;
   color: #fff;
   font-size: 5vw;
+  transition: all 1s;
 }
 
 .content {
