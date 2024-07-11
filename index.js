@@ -23,7 +23,7 @@ const ltText = document.querySelector(".lt")
 const birthText = document.querySelector("#content .birth")
 
 // 初始化目标时间
-let targetTime = '2024-7-11 01:11:00'
+let targetTime = '2024/7/11 12:20:00'
 
 // 上线时间
 const loginTime = {
@@ -52,7 +52,6 @@ const countdown = (futureTime) => {
   const currentTime = new Date().getTime();
   const futureTimeStamp = new Date(futureTime).getTime();
   const differTime = futureTimeStamp - currentTime;
-  console.log(futureTimeStamp, currentTime, differTime);
 
   const hour = Math.floor(differTime / (1000 * 60 * 60))
   const minute = Math.floor(differTime / (1000 * 60)) % 60;
