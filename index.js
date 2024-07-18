@@ -23,7 +23,7 @@ const ltText = document.querySelector(".lt")
 const birthText = document.querySelector("#content .birth")
 
 // 初始化目标时间
-let targetTime = '2024/7/12 16:40:30'
+let targetTime = '2024/7/19 23:57:00'
 let targetTimeDate = new Date(targetTime)
 
 // 上线时间
@@ -129,9 +129,9 @@ const setCountdown = (time) => {
     const hour = Number(time.hour)
     const minute = Number(time.minute)
     const second = Number(time.second)
-    if(hour > 0 || minute > 0 || second > 5 || second <3) {
+    if (hour > 0 || minute > 0 || second > 5 || second < 3) {
       return false
-    } 
+    }
 
     timeText.style.fontSize = "10vw"
     timeText.style.bottom = "50vh"
@@ -145,7 +145,7 @@ const setCountdown = (time) => {
   const timeObj = countdown(time)
   timeText.innerHTML = timeObj.time
   showBirth(timeObj.state)
-  let isTimeMove =  moveTimeElement(timeObj)
+  let isTimeMove = moveTimeElement(timeObj)
   // 如果首次倒计时小于等于零，则不执行定时器
   if (timeObj.state) return
 
@@ -154,7 +154,7 @@ const setCountdown = (time) => {
     timeText.innerHTML = realTime.time
     showBirth(realTime.state)
 
-    if(!isTimeMove) {
+    if (!isTimeMove) {
       isTimeMove = moveTimeElement(realTime)
     }
 
