@@ -23,7 +23,7 @@ const ltText = document.querySelector(".lt")
 const birthText = document.querySelector("#content .birth")
 
 // 初始化目标时间
-let targetTime = '2024/7/19 23:57:00'
+let targetTime = '2025/7/19 00:00:00'
 let targetTimeDate = new Date(targetTime)
 
 // 上线时间
@@ -94,23 +94,25 @@ const setCountdown = (time) => {
         timeText.innerHTML = ""
         window.requestAnimationFrame(updateWorld);
 
-        // 然后出现名字
-        let timer1 = setTimeout(() => {
-          ltText.style.transform = "scale(1)"
+        // // 然后出现名字
+        // let timer1 = setTimeout(() => {
+        //   ltText.style.transform = "scale(1)"
 
-          // 接着出现祝福
-          let timer2 = setTimeout(() => {
-            birthText.style.transform = "scale(1)"
+        //   // 接着出现祝福
+        //   let timer2 = setTimeout(() => {
+        //     birthText.style.transform = "scale(1)"
 
-            // 最后清除所有定时器
-            clearTimeout(timer)
-            clearTimeout(timer1)
-            clearTimeout(timer2)
-            timer = null
-            timer1 = null
-            timer2 = null
-          }, 1000);
-        }, 1000)
+        //     // 最后清除所有定时器
+        //     clearTimeout(timer)
+        //     clearTimeout(timer1)
+        //     clearTimeout(timer2)
+        //     timer = null
+        //     timer1 = null
+        //     timer2 = null
+        //   }, 1000);
+        // }, 1000)
+        clearTimeout(timer)
+        timer = null
       }, 1000)
 
     }
@@ -144,7 +146,8 @@ const setCountdown = (time) => {
   // 首次执行时间函数先运行一次获取倒计时
   const timeObj = countdown(time)
   timeText.innerHTML = timeObj.time
-  showBirth(timeObj.state)
+  // showBirth(timeObj.state)
+  showBirth(true)
   let isTimeMove = moveTimeElement(timeObj)
   // 如果首次倒计时小于等于零，则不执行定时器
   if (timeObj.state) return

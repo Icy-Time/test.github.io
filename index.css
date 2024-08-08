@@ -73,7 +73,7 @@ canvas {
 }
 
 .top-title {
-  display: none;
+  /* display: none; */
   position: fixed;
   top: 1vh;
   left: 1vw;
